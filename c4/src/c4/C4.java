@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package c4;
-
+import java.Util.Scanner;
 /**
  *
  * @author theCoderSchool SF
@@ -15,7 +15,7 @@ public class C4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner ghost = new Scanner(System.int);
     }
     
 }
