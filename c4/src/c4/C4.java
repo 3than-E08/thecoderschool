@@ -25,8 +25,19 @@ public class C4 {
              }
              
          }
-         
+         System.out.println("Welcome to connect foure");
+         int count =0;
+         String p1="jkhjkm";
+         String p2="gvhbjnm";
+         while( p1.length()!=1 && p2.length() !=1 ){
+             p1 = ghost.nextLine();
+             p2 = ghost.nextLine();
+         }
+             
+         while(count<43){
+             
          bord(board);
+    }
     }
     public static void bord(String[][]bard){
         System.out.println(" 1 2 3 4 5 6 7");
