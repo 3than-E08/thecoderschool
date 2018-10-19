@@ -39,7 +39,7 @@ public class C4 {
          bord(board);
     }
     }
-    public static void bord(String[][]bard){
+    public static  void bord(String[][]bard){
         System.out.println(" 1 2 3 4 5 6 7");
         for(int i =0;i<bard.length;i++){
                 System.out.println("|"+String.join("|",bard[i])+"|");
