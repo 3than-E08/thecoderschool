@@ -27,20 +27,25 @@ public class Shootinggame extends JApplet implements Runnable  {
     Thread thread;
     Player hunter;
     BufferedImage[] pics;
+    
     @Override
     public void init(){
-        setSize(500,500);
+        setSize(2000,950);
         setFocusable(true);
         pics = new BufferedImage[10];
         try{
-            pics[0]=ImageIO.read(Shootinggame.class.getResource("images/hi.jpng"));
+            pics[0]=ImageIO.read(Shootinggame.class.getResource("images/hi.jpng.jpg"));
+            pics[1]=ImageIO.read(Shootinggame.class.getResource("images/wizard.png"));
         } catch (IOException ex) {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        hunter = new Player(pics[1],1000,450);
     }
     @Override
     public void paint(Graphics g){
-        
+        g.drawImage(pics[0], 0, 0, this);
+        g.drawImage(pics[0], 1000, 0, this);
+        hunter.draw(g, this);
     }
     
     @Override
