@@ -7,6 +7,7 @@ package shootinggame;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -27,6 +28,8 @@ public class Shootinggame extends JApplet implements Runnable  {
     Thread thread;
     Player hunter;
     BufferedImage[] pics;
+    Event e;
+    keycontrol key;
     
     @Override
     public void init(){
@@ -40,6 +43,10 @@ public class Shootinggame extends JApplet implements Runnable  {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
         hunter = new Player(pics[1],1000,450);
+        e = new Event();
+        key = new keycontrol(KeyEvent.VK_W,KeyEvent.VK_S,KeyEvent.VK_D,KeyEvent.VK_A,KeyEvent.VK_SPACE,hunter,e);
+        this.addKeyListener(key);
+        this.e.addObserver(hunter);
     }
     @Override
     public void paint(Graphics g){
