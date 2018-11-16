@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -30,6 +31,7 @@ public class Shootinggame extends JApplet implements Runnable  {
     BufferedImage[] pics;
     Event e;
     keycontrol key;
+    ArrayList<Enemies> enemies;
     
     @Override
     public void init(){
@@ -39,6 +41,8 @@ public class Shootinggame extends JApplet implements Runnable  {
         try{
             pics[0]=ImageIO.read(Shootinggame.class.getResource("images/hi.jpng.jpg"));
             pics[1]=ImageIO.read(Shootinggame.class.getResource("images/wizard.png"));
+            pics[2]=ImageIO.read(Shootinggame.class.getResource("images/gob.png"));
+           
         } catch (IOException ex) {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,12 +51,15 @@ public class Shootinggame extends JApplet implements Runnable  {
         key = new keycontrol(KeyEvent.VK_W,KeyEvent.VK_S,KeyEvent.VK_D,KeyEvent.VK_A,KeyEvent.VK_SPACE,hunter,e);
         this.addKeyListener(key);
         this.e.addObserver(hunter);
+        enemies= new ArrayList <Enemies> ();
+        enemies.add(new Enemies(pics[2],100,100));
     }
     @Override
     public void paint(Graphics g){
         g.drawImage(pics[0], 0, 0, this);
         g.drawImage(pics[0], 1000, 0, this);
         hunter.draw(g, this);
+        enemies.get(0).draw(g, this);
     }
     
     @Override
