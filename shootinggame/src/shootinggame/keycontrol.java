@@ -34,8 +34,8 @@ public class keycontrol extends Observable implements KeyListener{
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        int keynum = e.getKeyCode();
+    public void keyPressed(KeyEvent o) {
+        int keynum = o.getKeyCode();
       if(keynum == up){
           hunter.up = true;
                   }
@@ -52,11 +52,12 @@ public class keycontrol extends Observable implements KeyListener{
           else if(keynum == shoot){
           hunter.shoot = true;
           }
+        e.setValue(o);
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-        int keynum = e.getKeyCode();
+    public void keyReleased(KeyEvent o) {
+        int keynum = o.getKeyCode();
       if(keynum == up){
           hunter.up = false;
                   }
@@ -73,7 +74,7 @@ public class keycontrol extends Observable implements KeyListener{
           else if(keynum == shoot){
           hunter.shoot = false;
           }
-      
+      e.setValue(o);
     }
     
 }
