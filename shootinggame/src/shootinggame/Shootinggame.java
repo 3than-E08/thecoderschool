@@ -36,13 +36,15 @@ public class Shootinggame extends JApplet implements Runnable  {
     @Override
     public void init(){
         setSize(2000,950);
+   
         setFocusable(true);
         pics = new BufferedImage[10];
         try{
             pics[0]=ImageIO.read(Shootinggame.class.getResource("images/hi.jpng.jpg"));
             pics[1]=ImageIO.read(Shootinggame.class.getResource("images/wizard.png"));
             pics[2]=ImageIO.read(Shootinggame.class.getResource("images/gob.png"));
-           
+            pics[3]=ImageIO.read(Shootinggame.class.getResource("images/wall.png"));
+            
         } catch (IOException ex) {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,8 +62,9 @@ public class Shootinggame extends JApplet implements Runnable  {
         g.drawImage(pics[0], 1000, 0, this);
         hunter.draw(g, this);
         enemies.get(0).draw(g, this);
+        g.drawImage(pics[3], 1600, 0, this);
     }
-    
+        
     @Override
     public void run() {
       Thread game = Thread.currentThread();
@@ -74,6 +77,21 @@ public class Shootinggame extends JApplet implements Runnable  {
           }
       }
     }
+    
+    @Override
+    public void start(){
+        thread = new Thread(this);
+        thread.setPriority(Thread.MIN_PRIORITY);
+        thread.start();
+        
+    }
+    
+    @Override
+    public void stop(){
+        
+    }
+
+
 
   
     

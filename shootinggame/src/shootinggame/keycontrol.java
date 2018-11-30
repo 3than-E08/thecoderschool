@@ -14,9 +14,9 @@ import java.util.Observable;
  * @author theCoderSchool SF
  */
 public class keycontrol extends Observable implements KeyListener{
-        private int up, down, left,right,shoot;
-        private Player hunter;
-        private Event e;
+        int up, down, left,right,shoot;
+        Player hunter;
+        Event e;
    
     public keycontrol(int up, int down, int right, int left,int shoot, Player hunter, Event e){
         this.up = up;
@@ -38,6 +38,7 @@ public class keycontrol extends Observable implements KeyListener{
         int keynum = o.getKeyCode();
       if(keynum == up){
           hunter.up = true;
+          System.out.println("1");
                   }
        else if(keynum == down){
           hunter.down = true;

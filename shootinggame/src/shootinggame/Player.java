@@ -46,6 +46,7 @@ public class Player extends GameObject implements Observer{
       if(alive){
           if(up){
               y-=10;
+              System.out.println("test");
           }
               else if(down){
               y+=10;
