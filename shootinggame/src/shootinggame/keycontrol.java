@@ -38,7 +38,7 @@ public class keycontrol extends Observable implements KeyListener{
         int keynum = o.getKeyCode();
       if(keynum == up){
           hunter.up = true;
-          System.out.println("1");
+ 
                   }
        else if(keynum == down){
           hunter.down = true;
