@@ -24,7 +24,6 @@ public class CollisionCheck {
             d.health--;
             c.alive=false;
             Shootinggame.enemies.remove(c);
-            System.out.println("hi");
         }
         
     }

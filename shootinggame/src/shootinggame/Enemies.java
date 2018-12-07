@@ -17,6 +17,7 @@ public class Enemies extends GameObject {
     BufferedImage img;
     int health,x,y;
     boolean alive;
+    int h;
     
     public Enemies(BufferedImage img, int x, int y) {
         super(img, x, y);
@@ -25,12 +26,21 @@ public class Enemies extends GameObject {
         this.x=x;
         this.y=y;
         this.img=img;
+        h=10;
+        
         
     }
        @Override
     public void draw(Graphics g, ImageObserver obs){
         if(alive){
-        this.x+=10;
+            if(this.x>1500){
+                h=-10;
+            }
+            else if(this.x<0){
+            h=10;
+            }
+            }
+            this.x+=h;
         g.drawImage(img, x, y, obs);
         }
     }
