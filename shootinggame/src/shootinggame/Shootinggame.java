@@ -28,23 +28,31 @@ public class Shootinggame extends JApplet implements Runnable  {
      */
     Thread thread;
     Player hunter;
-    BufferedImage[] pics;
+    static BufferedImage[] pics;
     Event e;
     keycontrol key;
     static ArrayList<Enemies> enemies;
    CollisionCheck cc;
+   static ArrayList<Projectile> projectiles;
     @Override
     public void init(){
         setSize(2000,950);
    
         setFocusable(true);
-        pics = new BufferedImage[10];
+        pics = new BufferedImage[100];
         try{
             pics[0]=ImageIO.read(Shootinggame.class.getResource("images/hi.jpng.jpg"));
-            pics[1]=ImageIO.read(Shootinggame.class.getResource("images/wizard.png"));
+            pics[1]=ImageIO.read(Shootinggame.class.getResource("images/wizardu.png"));
             pics[2]=ImageIO.read(Shootinggame.class.getResource("images/gob.png"));
             pics[3]=ImageIO.read(Shootinggame.class.getResource("images/wall.png"));
-            
+            pics[4]=ImageIO.read(Shootinggame.class.getResource("images/wizardl.png"));
+            pics[5]=ImageIO.read(Shootinggame.class.getResource("images/wizardd.png"));
+            pics[6]=ImageIO.read(Shootinggame.class.getResource("images/wizardr.png"));
+            pics[7]=ImageIO.read(Shootinggame.class.getResource("images/fireballu.png"));
+            pics[8]=ImageIO.read(Shootinggame.class.getResource("images/fireballd.png"));
+            pics[9]=ImageIO.read(Shootinggame.class.getResource("images/fireballl.png"));
+            pics[10]=ImageIO.read(Shootinggame.class.getResource("images/fireballR.png"));
+
         } catch (IOException ex) {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -56,6 +64,7 @@ public class Shootinggame extends JApplet implements Runnable  {
         enemies= new ArrayList <Enemies> ();
         enemies.add(new Enemies(pics[2],100,100));
         cc = new CollisionCheck();
+        projectiles= new ArrayList <Projectile>();
     }
     @Override
     public void paint(Graphics g){
@@ -69,7 +78,9 @@ public class Shootinggame extends JApplet implements Runnable  {
         for(int i=0; i < enemies.size(); i++){
             cc.hitbox(enemies.get(i), hunter);
         }
-        
+        for(int i = 0; i<projectiles.size();i++){
+            projectiles.get(i).draw(g, this);
+        }
     }
         
     @Override
