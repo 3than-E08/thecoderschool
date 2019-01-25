@@ -30,6 +30,7 @@ public class Shootinggame extends JApplet implements Runnable  {
     Player hunter;
     static BufferedImage[] pics;
     Event e;
+    int timer;
     keycontrol key;
     static ArrayList<Enemies> enemies;
    CollisionCheck cc;
@@ -65,18 +66,28 @@ public class Shootinggame extends JApplet implements Runnable  {
         enemies.add(new Enemies(pics[2],100,100));
         cc = new CollisionCheck();
         projectiles= new ArrayList <Projectile>();
+        timer = 0;
     }
     @Override
     public void paint(Graphics g){
+        timer ++;
         g.drawImage(pics[0], 0, 0, this);
         g.drawImage(pics[0], 1000, 0, this);
         hunter.draw(g, this);
+        if(timer ==100){
+            enemies.add(new Enemies(pics[2],0,(int)(Math.random()*800)));
+            timer=0;
+        }
         g.drawImage(pics[3], 1600, 0, this);
         for(int i=0; i < enemies.size();i++){
         enemies.get(i).draw(g,this); 
     }
         for(int i=0; i < enemies.size(); i++){
             cc.hitbox(enemies.get(i), hunter);
+            for(int  o =0;o< projectiles.size();o++){
+                cc.bullet(enemies.get(i),projectiles.get(o));
+                break;
+            }
         }
         for(int i = 0; i<projectiles.size();i++){
             projectiles.get(i).draw(g, this);

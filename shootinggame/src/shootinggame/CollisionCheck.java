@@ -27,7 +27,16 @@ public class CollisionCheck {
         }
         
     }
-            
+            public void bullet(Enemies c, Projectile d) {
+                a= new Rectangle (c.x,c.y,c.width-1,c.height-1);
+                b=new Rectangle (d.x,d.y,d.width-1,d.height-1);
+                if(a.intersects(b)) {
+                    d.alive=false;
+                    c.alive=false;
+                    Shootinggame.enemies.remove(c);
+                    Shootinggame.projectiles.remove(d);
+                }
+            }
     
     
     

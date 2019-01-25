@@ -69,18 +69,22 @@ public class Player extends GameObject implements Observer{
                   BufferedImage fireball = img ;
                   if(dir == 1){
                    fireball=Shootinggame.pics[7];
+                   Shootinggame.projectiles.add(new Projectile(fireball,x+70,y+30,dir));
                   }
                   else if(dir == 2){
                    fireball=Shootinggame.pics[8];
+                    Shootinggame.projectiles.add(new Projectile(fireball,x+100,y+100,dir));
                   }
                   else if(dir == 3){
                    fireball=Shootinggame.pics[9];
+                   Shootinggame.projectiles.add(new Projectile(fireball,x,y+100,dir));
                   }
                  else{
                    fireball=Shootinggame.pics[10];
+                   Shootinggame.projectiles.add(new Projectile(fireball,x+90,y+70,dir));
                   }
                   
-                  Shootinggame.projectiles.add(new Projectile(fireball,x,y,dir));
+                 
               }
       }
     }

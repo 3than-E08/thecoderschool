@@ -46,6 +46,9 @@ public class Projectile extends GameObject{
   
         g.drawImage(img, x, y, obs);
         }
+        else{
+            Shootinggame.projectiles.remove(this);
+        }
     
 }
 }
