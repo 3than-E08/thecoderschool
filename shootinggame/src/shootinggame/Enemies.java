@@ -39,9 +39,11 @@ public class Enemies extends GameObject {
             else if(this.x<0){
             h=10;
             }
-            }
-            this.x+=h;
+        this.x+=h;
         g.drawImage(img, x, y, obs);
+            }
+
+
         }
     }
     

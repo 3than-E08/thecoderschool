@@ -15,6 +15,9 @@ import java.util.Observer;
  *
  * @author theCoderSchool SF
  */
+
+
+
 public class Player extends GameObject implements Observer{
     int health,score,x,y, dir;
     boolean up,down,left,right,shoot,alive;
@@ -24,7 +27,7 @@ public class Player extends GameObject implements Observer{
         this.img = img;
         this.x = x;
         this.y=y;
-        health = 1;
+        health = 5;
         score = 0;
         up=false;
         down=false;
@@ -38,7 +41,12 @@ public class Player extends GameObject implements Observer{
     @Override
     public void draw(Graphics g, ImageObserver obs){
         if(alive){
+        if(health>0){
         g.drawImage(img, x, y, obs);
+        }
+        else{
+            alive= false;
+        }
         }
     }
 
@@ -47,21 +55,21 @@ public class Player extends GameObject implements Observer{
       if(alive){
           if(up){
               img = Shootinggame.pics[1];
-              y-=10;
+              y-=25;
               dir=1;
           }
               else if(down){
-              y+=10;
+              y+=25;
               dir=2;
               img = Shootinggame.pics[5];
           }
               else if(right){
-              x+=10;
+              x+=25;
               dir=4;
               img = Shootinggame.pics[6];
           }
               else if(left){
-              x-=10;
+              x-=25;
               dir=3;
               img = Shootinggame.pics[4];
           }

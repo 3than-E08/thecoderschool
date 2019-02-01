@@ -33,6 +33,9 @@ public class CollisionCheck {
                 if(a.intersects(b)) {
                     d.alive=false;
                     c.alive=false;
+                    if( (int)(Math.random()*5) == 3){
+                        Shootinggame.healthpack.add(new HealthPack(Shootinggame.pics[11],c.x,c.y));
+                    }
                     Shootinggame.enemies.remove(c);
                     Shootinggame.projectiles.remove(d);
                 }

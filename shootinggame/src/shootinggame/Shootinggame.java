@@ -35,6 +35,7 @@ public class Shootinggame extends JApplet implements Runnable  {
     static ArrayList<Enemies> enemies;
    CollisionCheck cc;
    static ArrayList<Projectile> projectiles;
+   static ArrayList<HealthPack> healthpack;
     @Override
     public void init(){
         setSize(2000,950);
@@ -53,7 +54,7 @@ public class Shootinggame extends JApplet implements Runnable  {
             pics[8]=ImageIO.read(Shootinggame.class.getResource("images/fireballd.png"));
             pics[9]=ImageIO.read(Shootinggame.class.getResource("images/fireballl.png"));
             pics[10]=ImageIO.read(Shootinggame.class.getResource("images/fireballR.png"));
-
+            pics[11]=ImageIO.read(Shootinggame.class.getResource("images/heathpack.png"));
         } catch (IOException ex) {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,6 +64,7 @@ public class Shootinggame extends JApplet implements Runnable  {
         this.addKeyListener(key);
         this.e.addObserver(hunter);
         enemies= new ArrayList <Enemies> ();
+        healthpack= new ArrayList <HealthPack> ();
         enemies.add(new Enemies(pics[2],100,100));
         cc = new CollisionCheck();
         projectiles= new ArrayList <Projectile>();
