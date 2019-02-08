@@ -54,7 +54,8 @@ public class Shootinggame extends JApplet implements Runnable  {
             pics[8]=ImageIO.read(Shootinggame.class.getResource("images/fireballd.png"));
             pics[9]=ImageIO.read(Shootinggame.class.getResource("images/fireballl.png"));
             pics[10]=ImageIO.read(Shootinggame.class.getResource("images/fireballR.png"));
-            pics[11]=ImageIO.read(Shootinggame.class.getResource("images/heathpack.png"));
+            pics[11]=ImageIO.read(Shootinggame.class.getResource("images/healthpack.png"));
+            pics[12]=ImageIO.read(Shootinggame.class.getResource("images/Heart.png"));
         } catch (IOException ex) {
             Logger.getLogger(Shootinggame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,7 +66,7 @@ public class Shootinggame extends JApplet implements Runnable  {
         this.e.addObserver(hunter);
         enemies= new ArrayList <Enemies> ();
         healthpack= new ArrayList <HealthPack> ();
-        enemies.add(new Enemies(pics[2],100,100));
+        enemies.add(new Enemies(pics[2],0,(int)(Math.random()*800)));
         cc = new CollisionCheck();
         projectiles= new ArrayList <Projectile>();
         timer = 0;
@@ -75,6 +76,12 @@ public class Shootinggame extends JApplet implements Runnable  {
         timer ++;
         g.drawImage(pics[0], 0, 0, this);
         g.drawImage(pics[0], 1000, 0, this);
+        int heartx=1600;
+        for(int i = 0;i< hunter.health;i++){
+            g.drawImage(pics[12],heartx,20,this);
+            heartx-=62;
+            
+        }
         hunter.draw(g, this);
         if(timer ==100){
             enemies.add(new Enemies(pics[2],0,(int)(Math.random()*800)));
@@ -84,12 +91,19 @@ public class Shootinggame extends JApplet implements Runnable  {
         for(int i=0; i < enemies.size();i++){
         enemies.get(i).draw(g,this); 
     }
+        for(int i=0; i < healthpack.size();i++){
+        healthpack.get(i).draw(g,this); 
+    }
         for(int i=0; i < enemies.size(); i++){
             cc.hitbox(enemies.get(i), hunter);
             for(int  o =0;o< projectiles.size();o++){
-                cc.bullet(enemies.get(i),projectiles.get(o));
+            cc.bullet(enemies.get(i),projectiles.get(o));
                 break;
             }
+            break;
+        }
+        for(int i=0; i< healthpack.size();i++){
+            cc.heal(healthpack.get(i),hunter);
         }
         for(int i = 0; i<projectiles.size();i++){
             projectiles.get(i).draw(g, this);

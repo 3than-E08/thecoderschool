@@ -14,15 +14,25 @@ import java.awt.image.ImageObserver;
  * @author default
  */
 public class HealthPack extends GameObject{
-    int x,y;
+    int x,y,timer;
 
     public HealthPack(BufferedImage img, int x, int y) {
         super(img, x, y);
+        this.x=x;
+        this.y=y;
+        timer=100;
+        
     }
     
     @Override
     public void draw(Graphics g, ImageObserver obs){
+       timer--;
+        if(timer==0){
+            Shootinggame.healthpack.remove(this);
+        }
+        else{
         g.drawImage(img,x,y,obs);
+    }
     }
     
 }

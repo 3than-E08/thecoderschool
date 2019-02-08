@@ -6,6 +6,7 @@
 package shootinggame;
 
 import java.awt.Rectangle;
+import static shootinggame.Shootinggame.enemies;
 
 /**
  *
@@ -33,13 +34,23 @@ public class CollisionCheck {
                 if(a.intersects(b)) {
                     d.alive=false;
                     c.alive=false;
-                    if( (int)(Math.random()*5) == 3){
-                        Shootinggame.healthpack.add(new HealthPack(Shootinggame.pics[11],c.x,c.y));
+                    if( (int)(Math.random()*5) == 1){
+                        Shootinggame.healthpack.add(new HealthPack(Shootinggame.pics[11],c.x+c.width/2,c.y+c.height/2));
                     }
+
                     Shootinggame.enemies.remove(c);
                     Shootinggame.projectiles.remove(d);
                 }
             }
+            public void heal(HealthPack d,Player c){
+                a= new Rectangle (c.x,c.y,c.width-1,c.height-1);
+                b= new Rectangle (d.x,d.y,d.width-1,d.height-1);
+                if (a.intersects (b) && c.health!=5) {
+                    Shootinggame.healthpack.remove(d);
+                    c.health++;
+                }
+            }
+            
     
     
     
