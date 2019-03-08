@@ -25,15 +25,17 @@ public class Morio extends JApplet implements Runnable{
  @Override
     public void init(){
         setSize(1000,700);
-        john = new BufferedImage[20];
+        setFocusable(true);
+        john = new BufferedImage[30];
+       
      try {
-         john[0]=ImageIO.read(Morio.class.getResource("pic/rainbo.jpg"));
-         john[1]=ImageIO.read(Morio.class.getResource("pic/rinbau.jpg"));
+         john[0] = ImageIO.read(Morio.class.getResource("img/f.png.png"));
+         john[1] = ImageIO.read(Morio.class.getResource("pic/Rinbau.png"));
      } catch (IOException ex) {
          Logger.getLogger(Morio.class.getName()).log(Level.SEVERE, null, ex);
      }
      bob = new ArrayList<platform>();
-     bob.add(new platform(john[1],500,350));
+    // bob.add(new platform(john[1],500,350));
     }
  @Override
  public void paint(Graphics g){
@@ -47,6 +49,7 @@ public class Morio extends JApplet implements Runnable{
     
     
     
+ @Override
         public void run() {
       Thread game = Thread.currentThread();
       while(thread==game){
