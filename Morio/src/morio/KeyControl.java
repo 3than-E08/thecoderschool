@@ -14,13 +14,13 @@ import java.util.Observable;
  * @author theCoderSchool SF
  */
 public class KeyControl extends Observable implements KeyListener{
-     int up, down, left,right,shoot;
+     int up,  left,right,shoot;
         Player player;
         Event e;
    
-    public KeyControl(int up, int down, int right, int left,int shoot, Player player, Event e){
+    public KeyControl(int up, int left, int right,int shoot, Player player, Event e){
         this.up = up;
-        this.down=down;
+
         this.right=right;
         this.left=left;
         this.shoot=shoot;
@@ -39,15 +39,14 @@ public class KeyControl extends Observable implements KeyListener{
           player.direction= 1;
  
       }
-       else if(keynum == down){
-          player.direction = 2;
-       }
-          else if(keynum == right){
-          player.right = true;
+
+      else if(keynum == right){
+          player.direction = 4;
+          
       
       } 
           else if(keynum == left){
-          player.left = true;
+          player.direction = 3;
           }
           else if(keynum == shoot){
           player.shoot = true;
@@ -59,17 +58,15 @@ public class KeyControl extends Observable implements KeyListener{
     public void keyReleased(KeyEvent o) {
         int keynum = o.getKeyCode();
       if(keynum == up){
-          player.up = false;
+          player.direction = 0;
                   }
-       else if(keynum == down){
-          player.down = false;
-       }
+  
           else if(keynum == right){
-          player.right = false;
+          player.direction = 0;
       
       } 
           else if(keynum == left){
-          player.left = false;
+          player.direction = 0;
           }
           else if(keynum == shoot){
           player.shoot = false;

@@ -5,10 +5,21 @@
  */
 package morio;
 
+import java.awt.event.KeyEvent;
+import java.util.Observable;
+
 /**
  *
  * @author theCoderSchool SF
  */
-class Event {
-    
+public class Event extends Observable{
+    Object event;
+    public Event(){
+        
+    }
+    public void setValue(KeyEvent e){
+        event = e;
+        setChanged();
+        notifyObservers(event);
+    }
 }

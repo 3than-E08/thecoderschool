@@ -6,6 +6,7 @@
 package morio;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,11 +24,15 @@ public class Morio extends JApplet implements Runnable{
  static BufferedImage[] john;
  ArrayList<platform> bob;
  Player player;
+ Event event;
+ KeyControl keycontrol;
  @Override
     public void init(){
         setSize(1000,700);
         setFocusable(true);
         john = new BufferedImage[30];
+        event = new Event();
+        
        
      try {
          john[0] = ImageIO.read(Morio.class.getResource("img/rainbo2.jpg"));
@@ -40,6 +45,9 @@ public class Morio extends JApplet implements Runnable{
      bob = new ArrayList<platform>();
      player = new Player(john[2],500 , 500);
     bob.add(new platform(john[1],500,693));
+    keycontrol = new KeyControl(KeyEvent.VK_W,KeyEvent.VK_A,KeyEvent.VK_D,KeyEvent.VK_SPACE,player,event);
+    this.addKeyListener(keycontrol);
+    this.event.addObserver(player);
     }
  @Override
  public void paint(Graphics g){
