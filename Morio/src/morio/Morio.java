@@ -26,12 +26,14 @@ public class Morio extends JApplet implements Runnable{
  Player player;
  Event event;
  KeyControl keycontrol;
+ CollisionCheck cc;
  @Override
     public void init(){
         setSize(1000,700);
         setFocusable(true);
         john = new BufferedImage[30];
         event = new Event();
+        cc = new CollisionCheck();
         
        
      try {
@@ -44,7 +46,7 @@ public class Morio extends JApplet implements Runnable{
      }
      bob = new ArrayList<platform>();
      player = new Player(john[2],500 , 500);
-    bob.add(new platform(john[1],500,693));
+    bob.add(new platform(john[1],500,580));
     keycontrol = new KeyControl(KeyEvent.VK_W,KeyEvent.VK_A,KeyEvent.VK_D,KeyEvent.VK_SPACE,player,event);
     this.addKeyListener(keycontrol);
     this.event.addObserver(player);
@@ -54,6 +56,7 @@ public class Morio extends JApplet implements Runnable{
     g.drawImage(john[0],0,0 ,this);
     for(int i=0; i< bob.size();i++){
         bob.get(i).draw(g,this);
+        cc.pp(player,bob.get(i) );
     }
     player.draw(g, this);
 

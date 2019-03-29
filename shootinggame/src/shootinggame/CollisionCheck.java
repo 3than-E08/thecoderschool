@@ -16,7 +16,8 @@ public class CollisionCheck {
     Rectangle a;
     Rectangle b;
     
-    public CollisionCheck(){}
+    public CollisionCheck(){
+    }
     
     public void hitbox(Enemies c,Player d){
         a =  new Rectangle(c.x,c.y,c.width-1,c.height-1);

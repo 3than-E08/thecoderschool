@@ -20,6 +20,7 @@ public class Player extends GameObject implements Observer{
     double garvity;
     Boolean shoot;
     BufferedImage pics;
+    Boolean butt;
     
     public Player(BufferedImage img, int x, int y) {
         super(img, x, y);
@@ -29,12 +30,13 @@ public class Player extends GameObject implements Observer{
         direction =0;
         shoot = false;
         garvity=0;
+        butt=false;
     }
     
     @Override
     public void draw (Graphics g,ImageObserver obs){
         garvity+=0.5;
-        if(y>= 598){
+        if(y>= 598 || butt ){
             garvity=0;
           if (direction ==1){
            garvity-=11;
