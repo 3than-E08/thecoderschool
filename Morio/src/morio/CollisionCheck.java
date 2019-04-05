@@ -17,10 +17,11 @@ public class CollisionCheck {
     Rectangle c;
     Rectangle d;
     Rectangle e;
+    
 public CollisionCheck(){}
 
 public void pp(Player player,platform pp){
-    e = new Rectangle(pp.x,pp.y,pp.width,pp.height+1);//platform hitbox
+    e = new Rectangle(pp.x,pp.y,pp.width-1,pp.height-1);//platform hitbox
     a = new Rectangle(player.x,player.y,player.width-1,1);//top hitbox  
     b = new Rectangle(player.x,player.y+2,1,player.height-2);//left hitbox
     c = new Rectangle(player.x +player.width-2,player.y+2,1,player.height-2);//right hitbox
@@ -28,6 +29,7 @@ public void pp(Player player,platform pp){
     if(e.intersects(d)){
         player.garvity =0;
         player.butt=true;
+       // System.out.println("1");
     }
     else if (e.intersects(a)){
         player.garvity*=-1;
@@ -39,8 +41,16 @@ public void pp(Player player,platform pp){
     else if(e.intersects(c)){
         player.x-=11;
     }
-    else{
-        player.butt=false;
+
+}
+
+public void Fp(Power flower,Player player){
+    a=new Rectangle(flower.x,flower.y,flower.width-1,flower.height-1);
+    b=new Rectangle(player.x,player.y,player.width-1,player.height-1);
+    if(flower.type ==1 && a.intersects(b)){
+        Morio.power.remove(flower);
+        player.shoot = true;
+        
     }
 }
 

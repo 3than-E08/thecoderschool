@@ -27,6 +27,7 @@ public class Morio extends JApplet implements Runnable{
  Event event;
  KeyControl keycontrol;
  CollisionCheck cc;
+ Power flower;
  @Override
     public void init(){
         setSize(1000,700);
@@ -41,15 +42,19 @@ public class Morio extends JApplet implements Runnable{
          john[1] = ImageIO.read(Morio.class.getResource("img/Rinbau.png"));
          john[2] = ImageIO.read(Morio.class.getResource("img/moriar.png"));
          john[3] = ImageIO.read(Morio.class.getResource("img/morial.png"));
+         john[4] = ImageIO.read(Morio.class.getResource("img/flower.jpg"));
      } catch (IOException ex) {
          Logger.getLogger(Morio.class.getName()).log(Level.SEVERE, null, ex);
      }
      bob = new ArrayList<platform>();
      player = new Player(john[2],500 , 500);
     bob.add(new platform(john[1],500,580));
+    bob.add(new platform(john[1],250,250));
+       bob.add(new platform(john[1],300,400));
     keycontrol = new KeyControl(KeyEvent.VK_W,KeyEvent.VK_A,KeyEvent.VK_D,KeyEvent.VK_SPACE,player,event);
     this.addKeyListener(keycontrol);
     this.event.addObserver(player);
+    flower =new Power(john[4],500,200,1);
     }
  @Override
  public void paint(Graphics g){
@@ -59,6 +64,7 @@ public class Morio extends JApplet implements Runnable{
         cc.pp(player,bob.get(i) );
     }
     player.draw(g, this);
+    flower.draw(g, this);
 
 }
    

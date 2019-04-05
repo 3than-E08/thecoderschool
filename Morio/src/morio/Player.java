@@ -35,11 +35,13 @@ public class Player extends GameObject implements Observer{
     
     @Override
     public void draw (Graphics g,ImageObserver obs){
+        
         garvity+=0.5;
         if(y>= 598 || butt ){
             garvity=0;
           if (direction ==1){
-           garvity-=11;
+           garvity-=16;
+           butt=false;
         }
         }
         
@@ -54,7 +56,7 @@ public class Player extends GameObject implements Observer{
     public void update(Observable o, Object arg) {
 
 
-
+        butt=false;
          if (direction ==3){
             x-=11;
             pics= Morio.john[3];
